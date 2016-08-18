@@ -81,7 +81,7 @@ public class LinearProgressBar: UIView {
 
         self.isAnimationRunning = false
         UIView.animateWithDuration(0.5, animations: {
-            self.progressBarIndicator.frame = CGRect(x: 0, y: 0, width: self.widthForLinearBar, height: 0)
+            self.progressBarIndicator.frame = CGRect(x: self.widthForLinearBar, y: 0, width: self.widthForLinearBar, height: 0)
             self.frame = CGRect(x: 0, y: self.frame.origin.y, width: self.widthForLinearBar, height: 0)
         })
     }
