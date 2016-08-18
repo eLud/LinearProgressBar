@@ -24,6 +24,7 @@ public class LinearProgressBar: UIView {
     public var progressBarColor: UIColor = UIColor(red:0.12, green:0.53, blue:0.90, alpha:1.0)
     public var heightForLinearBar: CGFloat = 5
     public var widthForLinearBar: CGFloat = 0
+    public var apparitionAnimationDuration = 0.5
 
     public init () {
         super.init(frame: CGRectMake(0, 20, screenSize.width, 0))
@@ -67,7 +68,7 @@ public class LinearProgressBar: UIView {
         if !isAnimationRunning {
             self.isAnimationRunning = true
 
-            UIView.animateWithDuration(0.5, delay:0, options: [], animations: {
+            UIView.animateWithDuration(apparitionAnimationDuration, delay:0, options: [], animations: {
                 self.frame = CGRect(x: 0, y: self.frame.origin.y, width: self.widthForLinearBar, height: self.heightForLinearBar)
                 }, completion: { animationFinished in
                     self.addSubview(self.progressBarIndicator)
@@ -80,7 +81,8 @@ public class LinearProgressBar: UIView {
     public func stopAnimation() {
 
         self.isAnimationRunning = false
-        UIView.animateWithDuration(0.5, animations: {
+
+        UIView.animateWithDuration(apparitionAnimationDuration, animations: {
             self.progressBarIndicator.frame = CGRect(x: self.widthForLinearBar, y: 0, width: self.widthForLinearBar, height: 0)
             self.frame = CGRect(x: 0, y: self.frame.origin.y, width: self.widthForLinearBar, height: 0)
         })
